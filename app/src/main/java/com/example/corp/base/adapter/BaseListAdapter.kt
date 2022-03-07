@@ -1,19 +1,37 @@
 package com.example.corp.base.adapter
 
-import android.view.ViewGroup
+import android.annotation.SuppressLint
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.viewbinding.ViewBinding
 
-open class BaseListAdapter<T : ListAdapterItem, VB : ViewBinding, VHolder : BaseViewHolder<T, VB>>
+abstract class BaseListAdapter<T : ListAdapterItem, VB : ViewBinding, VHolder : BaseViewHolder<T, VB>>
     (diffCallback: DiffUtil.ItemCallback<T> = ListAdapterItemDiffCallback()) : ListAdapter<T, VHolder>(diffCallback) {
 
+    private val itemList: MutableList<T> = ArrayList()
+
+    protected abstract fun bind(holder: VB, item: T, position: Int)
 
     override fun onBindViewHolder(holder: VHolder, position: Int) {
-        holder.bind(holder.viewDataBinding, getItem(position))
+        bind(holder.viewDataBinding, itemList[position], position)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VHolder {
-        TODO("Not yet implemented")
+    @SuppressLint("NotifyDataSetChanged")
+    open fun replaceData(newList: List<T>?) {
+        itemList.clear()
+        itemList.addAll(newList ?: emptyList())
+        notifyDataSetChanged()
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    open fun addData(newList: List<T>?) {
+        itemList.addAll(newList ?: emptyList())
+        notifyDataSetChanged()
+    }
+
+    override fun getItemCount(): Int = itemList.size
+
+    fun getData(): MutableList<T> {
+        return itemList
     }
 }

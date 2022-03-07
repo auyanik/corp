@@ -16,6 +16,7 @@ abstract class BaseFragment<BindingType : ViewBinding, ViewModelType : BaseViewM
     protected abstract val viewModel: ViewModelType
     abstract fun getViewBinding(): BindingType
     abstract fun onFragmentCreated()
+    open fun observe() {}
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -24,7 +25,7 @@ abstract class BaseFragment<BindingType : ViewBinding, ViewModelType : BaseViewM
     ): View? {
         binding = getViewBinding()
         loadingDialog = LoadingDialog(requireContext())
-        onFragmentCreated()
+        observe()
         return binding.root
     }
 

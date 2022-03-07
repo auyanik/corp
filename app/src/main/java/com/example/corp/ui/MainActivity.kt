@@ -14,4 +14,8 @@ class MainActivity : AppCompatActivity() {
 
         findNavController(R.id.mainActivityNavigate).navigate(R.id.userListFragmentNavigate)
     }
+
+    override fun onBackPressed() {
+        finish()
+    }
 }

@@ -6,8 +6,9 @@ import com.example.corp.data.UserListRepository
 import javax.inject.Inject
 
 class UserListUseCase @Inject constructor(private val userListRepository: UserListRepository) :
-    CoroutineUseCase<DataSourceResponse> {
-    override suspend fun run(): DataSourceResponse {
-        return userListRepository.getPersons()
+    CoroutineUseCase<Int, DataSourceResponse> {
+
+    override suspend fun run(params: Int): DataSourceResponse {
+        return userListRepository.getPersons(params)
     }
 }

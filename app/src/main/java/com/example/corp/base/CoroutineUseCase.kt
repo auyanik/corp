@@ -1,5 +1,5 @@
 package com.example.corp.base
 
-interface CoroutineUseCase<Result> {
-    suspend fun run(): Result
+interface CoroutineUseCase<Params, Result> {
+    suspend fun run(params: Params): Result
 }

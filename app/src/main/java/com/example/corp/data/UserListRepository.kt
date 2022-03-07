@@ -6,8 +6,8 @@ import com.example.corp.common.FetchResponse
 import javax.inject.Inject
 
 class UserListRepository @Inject constructor(private val dataSource: DataSource) {
-    suspend fun getPersons(): DataSourceResponse {
-        return dataSource.fetch(next = null)
+    suspend fun getPersons(next: Int): DataSourceResponse {
+        return dataSource.fetch(next = next.toString())
     }
 }
 
