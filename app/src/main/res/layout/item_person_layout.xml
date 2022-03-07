@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:text="Ahmet Uyanık (2156)"
+    android:padding="@dimen/space_small"
+    android:background="@color/white"
+    android:textColor="@color/black"
+    tools:ignore="MissingDefaultResource" />

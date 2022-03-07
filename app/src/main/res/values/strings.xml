@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Corp</string>
+    <string name="no_have_items">Kullanıcı bulunamadı.</string>
+    <string name="refresh">Yenile</string>
+</resources>
